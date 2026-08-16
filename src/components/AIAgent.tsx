@@ -70,7 +70,7 @@ export const AIAgent = () => {
       };
       setMessages([greeting]);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length]);
 
   // Semantic search in knowledge base
   const searchKnowledgeBase = (query: string): string => {
@@ -227,7 +227,7 @@ export const AIAgent = () => {
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-4 text-white">
-              <h3 className="font-bold text-lg">🤖 Sharjeel's AI Assistant</h3>
+              <h3 className="font-bold text-lg">{`🤖 Sharjeel's AI Assistant`}</h3>
               <p className="text-xs opacity-90">
                 Powered by RAG - Always learning
               </p>

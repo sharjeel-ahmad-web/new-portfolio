@@ -46,7 +46,7 @@ export const Contact = () => {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Info */}
         <div className="flex flex-col gap-6 text-white relative">
-          <h3 className="text-2xl font-semibold">Let's build your next digital ecosystem</h3>
+          <h3 className="text-2xl font-semibold">{`Let's build your next digital ecosystem`}</h3>
           <p className="text-gray-400">
             Whether you need a lightning-fast e-commerce platform, enterprise API integrations, or intelligent workflow automation—I&apos;m ready to architect it.</p>
           
@@ -68,7 +68,7 @@ export const Contact = () => {
           </div>
           
           <p className="text-gray-400 text-sm">
-            Don't like forms? Reach out directly at{" "}
+            {`Don't like forms? Reach out directly at `}
             <a
               href="mailto:pykinsu@outlook.com"
               className="underline underline-offset-2 decoration-yellow-400 hover:text-yellow-400 transition-colors"
