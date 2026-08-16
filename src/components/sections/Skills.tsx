@@ -2,15 +2,19 @@ import { SkillDataProvider } from "@/providers/skill-data-provider";
 import { SkillText } from "@/components/ui/SkillText";
 
 import {
+  ai_automation_skills,
+  ecommerce_skills,
   backend_skills,
   frontend_skills,
   skills,
 } from "@/lib/constants";
 
 const skillCategories = [
-  { title: "Core Skills", data: skills },
-  { title: "Frontend", data: frontend_skills },
-  { title: "Backend", data: backend_skills },
+  { title: "AI Automation", data: ai_automation_skills, folder: "skills/automation tools" },
+  { title: "E-Commerce", data: ecommerce_skills, folder: "skills/ecommerance" },
+  { title: "Core Skills", data: skills, folder: "skills" },
+  { title: "Frontend", data: frontend_skills, folder: "skills" },
+  { title: "Backend", data: backend_skills, folder: "skills" },
 ];
 
 export const Skills = () => {
@@ -24,7 +28,7 @@ export const Skills = () => {
 
       {/* Skills Grid by Category */}
       <div className="flex flex-col w-full max-w-6xl gap-12">
-        {skillCategories.map(({ title, data }) => (
+        {skillCategories.map(({ title, data, folder }) => (
           <div key={title} className="flex flex-col gap-6">
             <h3 className="text-xl font-bold text-center text-white md:text-2xl">
               {title}
@@ -38,6 +42,7 @@ export const Skills = () => {
                   width={skill.width}
                   height={skill.height}
                   index={i}
+                  folder={folder}
                 />
               ))}
             </div>

@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Calendar, Mail } from "lucide-react";
-import { getDB } from "@/lib/db";
 
 interface Message {
   id: string;

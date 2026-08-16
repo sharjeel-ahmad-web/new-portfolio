@@ -7,10 +7,58 @@ import {
   RxLinkedinLogo,
 } from "react-icons/rx";
 
+export const ecommerce_skills = [
+  {
+    skill_name: "Shopify",
+    image: "shopify.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "WooCommerce",
+    image: "woo.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Stripe Payments",
+    image: "stripe.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "WordPress",
+    image: "wordpress.png",
+    width: 80,
+    height: 80,
+  },
+] as const;
+
+export const ai_automation_skills = [
+  {
+    skill_name: "n8n",
+    image: "n8n.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Make.com",
+    image: "make.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Zapier",
+    image: "zapier.png",
+    width: 80,
+    height: 80,
+  },
+] as const;
+
 export const skills = [
   {
-    skill_name: "RESTful API Design",
-    image: "rest.png",
+    skill_name: "TypeScript",
+    image: "ts.png",
     width: 80,
     height: 80,
   },
@@ -21,50 +69,50 @@ export const skills = [
     height: 80,
   },
   {
-    skill_name: "Error Handling",
-    image: "error.png",
+    skill_name: "RESTful APIs",
+    image: "express.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "System Logging",
-    image: "logging.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Workflow Automation",
-    image: "automation.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "n8n",
-    image: "n8n.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "TypeScript",
-    image: "ts.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "System Design",
-    image: "architecture.png",
+    skill_name: "Docker",
+    image: "docker.png",
     width: 80,
     height: 80,
   },
   {
     skill_name: "Database Design",
-    image: "database.png",
+    image: "mongodb.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "Security & Auth",
-    image: "security.png",
+    skill_name: "Firebase",
+    image: "firebase.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "HTML5",
+    image: "html.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "CSS3",
+    image: "css.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "JavaScript",
+    image: "js.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Go",
+    image: "go.png",
     width: 80,
     height: 80,
   },
@@ -108,20 +156,20 @@ export const frontend_skills = [
     height: 80,
   },
   {
-    skill_name: "Shopify",
-    image: "shopify.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "WordPress",
-    image: "wordpress.png",
-    width: 80,
-    height: 80,
-  },
-  {
     skill_name: "Framer Motion",
     image: "framer.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Redux",
+    image: "redux.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "React Query",
+    image: "reactquery.png",
     width: 80,
     height: 80,
   },
@@ -141,26 +189,26 @@ export const backend_skills = [
     height: 80,
   },
   {
-    skill_name: "MongoDB",
-    image: "mongodb.png",
-    width: 40,
-    height: 40,
-  },
-  {
-    skill_name: "Laravel",
-    image: "laravel.png",
+    skill_name: "PostgreSQL",
+    image: "postgresql.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "Python",
-    image: "python.png",
+    skill_name: "MySQL",
+    image: "mysql.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "n8n",
-    image: "n8n.png",
+    skill_name: "Prisma",
+    image: "prisma.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Stripe",
+    image: "stripe.png",
     width: 80,
     height: 80,
   },
