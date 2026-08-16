@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import type { PropsWithChildren } from "react";
 
 import { Footer } from "@/components/layout/Footer";
@@ -11,6 +12,12 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// ⚡ Lazy-load AI Agent to improve initial page load
+const AIAgent = dynamic(() => import("@/components/AIAgent").then(mod => ({ default: mod.AIAgent })), {
+  loading: () => null,
+  ssr: false,
+});
+
 // ✅ Global viewport theme color
 export const viewport: Viewport = {
   themeColor: "#030014",
@@ -18,8 +25,8 @@ export const viewport: Viewport = {
 
 // ✅ Global site metadata (SEO)
 export const metadata: Metadata = {
-  title: "Kinsu Rajput | Portfolio",
-  description: "Welcome to my portfolio.",
+  title: "Sharjeel Ahmad | Remote Web Developer & AI Integration Specialist",
+  description: "Lightning-fast Next.js/MERN apps, enterprise API integrations, and n8n workflow automations for e-commerce brands. BSSE in AI from University of Lahore.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -28,21 +35,21 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: "Kinsu Rajput",
-      url: "https://github.com/pykinsu",
+      name: "Sharjeel Ahmad",
+      url: "https://github.com/sharjeelahmad",
     },
   ],
   openGraph: {
     type: "website",
-    url: "https://nextjs-portfolio.vercel.app",
-    title: "Kinsu Rajput | Portfolio",
-    description: "Welcome to my portfolio.",
+    url: "https://sharjeel.dev",
+    title: "Sharjeel Ahmad | Remote Web Developer & AI Integration Specialist",
+    description: "Lightning-fast Next.js/MERN apps, enterprise API integrations, and n8n automations for e-commerce brands.",
     images: [
       {
         url: "/kinsu.svg",
         width: 1200,
         height: 630,
-        alt: "Kinsu Rajput",
+        alt: "Sharjeel Ahmad",
       },
     ],
   },
@@ -61,6 +68,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Navbar />
         {children}
         <Footer />
+        <AIAgent />
       </body>
     </html>
   );

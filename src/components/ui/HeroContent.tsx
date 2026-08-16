@@ -22,7 +22,7 @@ export const HeroContent = () => {
         >
           <SparklesIcon className="text-[#b49bff] h-4 w-4 md:h-5 md:w-5" />
           <h1 className="text-[12px] md:text-[13px] text-gray-200 font-semibold">
-            Welcome Buddy 😁
+            🚀 Remote Web Developer & AI Integration Specialist
           </h1>
         </motion.div>
 
@@ -31,35 +31,34 @@ export const HeroContent = () => {
           variants={slideInFromLeft(0.5)}
           className="text-3xl sm:text-4xl md:text-6xl font-bold text-white max-w-[600px] leading-tight"
         >
-          From{" "}
+          Build{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-            Code
+            Lightning-Fast
           </span>{" "}
-          to{" "}
+          Digital{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-            Concept
+            Ecosystems
           </span>
         </motion.h1>
 
         {/* Description */}
         <motion.p
           variants={slideInFromLeft(0.8)}
-          className="text-base sm:text-lg text-gray-400 my-3 sm:my-4 max-w-[500px] mx-auto md:mx-0"
+          className="text-base sm:text-lg text-gray-400 my-3 sm:my-4 max-w-[550px] mx-auto md:mx-0"
         >
-          I&apos;m a student specializing in building modern web applications. 
-          Check out my projects and skills below.
+          I architect secure, scalable systems for e-commerce brands. Custom Next.js/MERN apps, enterprise API integrations (Stripe, Salesforce), and intelligent n8n automations that transform manual workflows into automated powerhouses.
         </motion.p>
 
         {/* CTA Button */}
         <motion.a
           variants={slideInFromLeft(1)}
-          href="#profile"
+          href="#contact"
           className="group py-3 px-6 bg-gradient-to-r from-purple-600 to-cyan-500 text-white 
           text-sm sm:text-base font-semibold rounded-full shadow-lg 
-          transition-all duration-300 max-w-[160px] sm:max-w-[200px] 
+          transition-all duration-300 max-w-[160px] sm:max-w-[220px] 
           mx-auto md:mx-0 flex items-center justify-center gap-2 hover:gap-3"
         >
-          Know Me
+          Start Your Project
           <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
         </motion.a>
       </div>

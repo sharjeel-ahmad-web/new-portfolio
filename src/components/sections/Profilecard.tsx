@@ -9,8 +9,9 @@ import {
   FaTwitter,
   FaFacebook,
   FaTelegram,
-} from "react-icons/fa";
-import { SiCodepen } from "react-icons/si";
+  FaCodepen,
+  FaLinkedin,
+} from "react-icons/fa6";
 import { ArrowRight } from "lucide-react";
 
 // ✅ Helper animation
@@ -42,33 +43,40 @@ export const Profilecard = () => {
         >
           <Image
             src="/pykinsu.jpg"
-            alt="Kinsu Rajput"
+            alt="Sharjeel Ahmad"
             width={160}
             height={160}
-            className="rounded-full border-4 border-yellow-400 shadow-lg"
+            className="rounded-full border-4 border-cyan-400 shadow-lg"
           />
 
-          <h1 className="text-4xl font-bold text-white">Kinsu Rajput</h1>
-          <p className="text-xl text-gray-300">I&apos;m a Fullstack Developer</p>
+          <h1 className="text-4xl font-bold text-white">Sharjeel Ahmad</h1>
+          <p className="text-xl text-gray-300">Remote Web Developer & AI Integration Specialist</p>
+          <p className="text-sm text-gray-400">📍 Lahore, Pakistan | BSSE in AI - University of Lahore</p>
 
           {/* Social Icons */}
           <div className="flex gap-6 mt-6 flex-wrap justify-center">
-            <a href="https://t.me/pykinsu" target="_blank" rel="noopener noreferrer">
-              <FaTelegram className="text-yellow-400 text-3xl hover:scale-110 transition-transform" />
+            <a href="https://linkedin.com/in/sharjeelahmad/" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className="text-cyan-400 text-3xl hover:scale-110 transition-transform" />
             </a>
-            <a href="https://instagram.com/pykinsu" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-yellow-400 text-3xl hover:scale-110 transition-transform" />
+            <a href="https://github.com/sharjeelahmad" target="_blank" rel="noopener noreferrer">
+              <FaGithub className="text-cyan-400 text-3xl hover:scale-110 transition-transform" />
             </a>
-            <a href="https://twitter.com/pykinsu" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="text-yellow-400 text-3xl hover:scale-110 transition-transform" />
+            <a href="https://twitter.com/sharjeel_dev" target="_blank" rel="noopener noreferrer">
+              <FaTwitter className="text-cyan-400 text-3xl hover:scale-110 transition-transform" />
             </a>
-            <a href="https://github.com/pykinsu" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="text-yellow-400 text-3xl hover:scale-110 transition-transform" />
-            </a>
-            <a href="https://codepen.io/pykinsu" target="_blank" rel="noopener noreferrer">
-              <SiCodepen className="text-yellow-400 text-3xl hover:scale-110 transition-transform" />
-            </a>
-            
+          </div>
+
+          {/* Experience Badges */}
+          <div className="flex flex-wrap gap-3 justify-center mt-6 text-xs">
+            <span className="px-3 py-1 bg-purple-600/30 border border-purple-500 rounded-full text-purple-200">
+              Programmers Force
+            </span>
+            <span className="px-3 py-1 bg-cyan-600/30 border border-cyan-500 rounded-full text-cyan-200">
+              Soft Enterprise
+            </span>
+            <span className="px-3 py-1 bg-purple-600/30 border border-purple-500 rounded-full text-purple-200">
+              Devcotk Ltd
+            </span>
           </div>
         </motion.div>
 
@@ -81,15 +89,20 @@ export const Profilecard = () => {
         >
           {/* Hero Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white max-w-[600px] leading-tight">
-            Hey👋🏻 I&apos;m{" "}
+            Scale Your E-commerce with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              Kinsu
+              Next.js
             </span>{" "}
-            and I&apos;m{" "}
+            &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              BCA Student
+              Automation
             </span>
           </h1>
+
+          {/* Description */}
+          <p className="text-gray-300 text-lg leading-relaxed">
+            I architect lightning-fast digital ecosystems with secure APIs, intelligent automations, and enterprise-grade systems. From Stripe integrations to Salesforce workflows—let&apos;s build something extraordinary.
+          </p>
 
           {/* CTA Button */}
           <motion.a

@@ -9,42 +9,41 @@ import {
 
 export const skills = [
   {
-    skill_name: "HTML",
-    image: "html.png",
+    skill_name: "RESTful API Design",
+    image: "rest.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "CSS",
-    image: "css.png",
+    skill_name: "GraphQL",
+    image: "graphql.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "JavaScript",
-    image: "js.png",
-    width: 65,
-    height: 65,
-  },
-  {
-    skill_name: "Tailwind CSS",
-    image: "tailwind.png",
+    skill_name: "Error Handling",
+    image: "error.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "React",
-    image: "react.png",
+    skill_name: "System Logging",
+    image: "logging.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "Redux",
-    image: "redux.png",
+    skill_name: "Workflow Automation",
+    image: "automation.png",
     width: 80,
     height: 80,
   },
-
+  {
+    skill_name: "n8n",
+    image: "n8n.png",
+    width: 80,
+    height: 80,
+  },
   {
     skill_name: "TypeScript",
     image: "ts.png",
@@ -52,67 +51,55 @@ export const skills = [
     height: 80,
   },
   {
-    skill_name: "Next.js 14",
-    image: "next.png",
+    skill_name: "System Design",
+    image: "architecture.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "Framer Motion",
-    image: "framer.png",
+    skill_name: "Database Design",
+    image: "database.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "Node.js",
-    image: "node.png",
+    skill_name: "Security & Auth",
+    image: "security.png",
     width: 80,
     height: 80,
-  },
-  {
-    skill_name: "MongoDB",
-    image: "mongodb.png",
-    width: 40,
-    height: 40,
   },
 ] as const;
 
 export const socials = [
   {
-    name: "Instagram",
-    icon: RxInstagramLogo,
-    link: "https://instagram.com/pykinsu/",
-  },
-  {
     name: "LinkedIn",
     icon: FaLinkedin,
-    link: "https://linkedin.com/in/pykinsu/",
+    link: "https://linkedin.com/in/sharjeelahmad/",
+  },
+  {
+    name: "GitHub",
+    icon: RxGithubLogo,
+    link: "https://github.com/sharjeelahmad",
   },
   {
     name: "Twitter",
     icon: RxTwitterLogo,
-    link: "https://twitter.com/pykinsu/",
+    link: "https://twitter.com/sharjeel_dev",
   },
 ] as const;
 
 export const frontend_skills = [
   {
-    skill_name: "HTML",
-    image: "html.png",
+    skill_name: "React",
+    image: "react.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "CSS",
-    image: "css.png",
+    skill_name: "Next.js 14",
+    image: "next.png",
     width: 80,
     height: 80,
-  },
-  {
-    skill_name: "JavaScript",
-    image: "js.png",
-    width: 65,
-    height: 65,
   },
   {
     skill_name: "Tailwind CSS",
@@ -120,18 +107,21 @@ export const frontend_skills = [
     width: 80,
     height: 80,
   },
-
   {
-    skill_name: "React",
-    image: "react.png",
+    skill_name: "Shopify",
+    image: "shopify.png",
     width: 80,
     height: 80,
   },
-
-
   {
-    skill_name: "Next.js 14",
-    image: "next.png",
+    skill_name: "WordPress",
+    image: "wordpress.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Framer Motion",
+    image: "framer.png",
     width: 80,
     height: 80,
   },
@@ -156,13 +146,26 @@ export const backend_skills = [
     width: 40,
     height: 40,
   },
-
-
-] as const;
-
-
-export const projects = [
   {
+    skill_name: "Laravel",
+    image: "laravel.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_naE-commerce Platform with Real-time Inventory",
+    image: "/projects/project1.jpg",
+    link: "https://github.com/sharjeelahmad",
+  },
+  {
+    title: "AI-Powered CRM with n8n Workflow Automation",
+    image: "/projects/project2.jpg",
+    link: "https://github.com/sharjeelahmad",
+  },
+  {
+    title: "Stripe Payment Integration & Billing Dashboard",
+    image: "/projects/project3.jpg",
+    link: "https://github.com/sharjeelahmad
     title: "ReelSaver – Instagram Reel Downloader & Api",
     
     image: "/projects/project2.jpg",

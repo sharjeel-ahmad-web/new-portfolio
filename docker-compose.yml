@@ -1,0 +1,13 @@
+services:
+  portfolio:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    # For development, uncomment the volume and use `npm run dev` instead
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
+    # command: npm run dev

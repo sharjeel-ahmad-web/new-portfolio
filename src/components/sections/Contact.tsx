@@ -38,15 +38,37 @@ export const Contact = () => {
     >
       {/* Title */}
       <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
-        Get In Touch
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+          Ready to Scale?
+        </span>
       </h2>
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Info */}
         <div className="flex flex-col gap-6 text-white relative">
-          <h3 className="text-2xl font-semibold">Let’s talk about everything!</h3>
+          <h3 className="text-2xl font-semibold">Let's build your next digital ecosystem</h3>
           <p className="text-gray-400">
-            Don’t like forms? Send me an{" "}
+            Whether you need a lightning-fast e-commerce platform, enterprise API integrations, or intelligent workflow automation—I&apos;m ready to architect it.</p>
+          
+          <div className="space-y-4">
+            <p className="flex items-center gap-3 text-gray-300">
+              <span className="text-cyan-400 font-bold">📧</span>
+              <a href="mailto:chjiimy@gmail.com" className="hover:text-cyan-400 transition">
+                chjiimy@gmail.com
+              </a>
+            </p>
+            <p className="flex items-center gap-3 text-gray-300">
+              <span className="text-purple-400 font-bold">🌍</span>
+              Lahore, Pakistan (Remote)
+            </p>
+            <p className="flex items-center gap-3 text-gray-300">
+              <span className="text-cyan-400 font-bold">💼</span>
+              Full-time | Contract | Freelance
+            </p>
+          </div>
+          
+          <p className="text-gray-400 text-sm">
+            Don't like forms? Reach out directly at{" "}
             <a
               href="mailto:pykinsu@outlook.com"
               className="underline underline-offset-2 decoration-yellow-400 hover:text-yellow-400 transition-colors"

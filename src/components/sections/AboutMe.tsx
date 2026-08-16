@@ -18,7 +18,7 @@ export const AboutMe = () => {
         >
           <Image
             src="/standing.png"
-            alt="Kinsu standing"
+            alt="Sharjeel Ahmad"
             width={320}
             height={400}
             className="rounded-xl shadow-lg object-contain"
@@ -49,25 +49,15 @@ export const AboutMe = () => {
 
           {/* About Text */}
           <p className="text-gray-300 text-lg relative z-10">
-            My name is <span className="text-yellow-400 font-semibold">Kinsu Rajput</span>.  
-            I am currently pursuing{" "}
-            <span className="text-green-400 font-medium">BCA at Vidya Vihar</span>.  
-            I truly enjoy my college life while learning and building exciting projects.
+            I&apos;m <span className="text-cyan-400 font-semibold">Sharjeel Ahmad</span>, a <span className="text-purple-400 font-medium">Remote Web Developer & AI Integration Specialist</span> based in Lahore, Pakistan. I hold a <span className="text-green-400 font-medium">BSSE in Artificial Intelligence from The University of Lahore</span>.
           </p>
 
           <p className="text-gray-300 text-lg relative z-10">
-            I have experience with{" "}
-            <span className="font-medium text-purple-400">
-              HTML, CSS, JavaScript, Python, and C
-            </span>
-            . Currently, I’m learning{" "}
-            <span className="font-medium text-cyan-400">Java and C</span> to
-            expand my development skills.
+            I architect <span className="font-medium text-cyan-400">secure, scalable digital ecosystems</span> using <span className="font-medium text-purple-400">MERN Stack, Next.js 14, and n8n</span>. My expertise spans enterprise API integrations (Stripe, Salesforce), real-time systems, and intelligent workflow automations that transform business processes.
           </p>
 
           <p className="text-gray-300 text-lg relative z-10">
-            Passionate about coding and technology, I love exploring new tools and creating
-            seamless user experiences.
+            <span className="font-semibold text-purple-400">Professional Experience:</span> I&apos;ve worked at <span className="text-cyan-200">Programmers Force</span> (Full-Stack & AI), <span className="text-cyan-200">Soft Enterprise</span> (MERN), <span className="text-cyan-200">Devcotk Ltd</span>, and others—delivering high-ticket custom solutions for e-commerce brands and startups.
           </p>
 
           {/* Reach Me Button */}
@@ -77,7 +67,7 @@ export const AboutMe = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all relative z-10"
           >
-            Reach Me
+            Let&apos;s Build Something
             <ArrowRight size={20} />
           </motion.a>
         </motion.div>
