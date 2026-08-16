@@ -153,7 +153,22 @@ export const backend_skills = [
     height: 80,
   },
   {
-    skill_naE-commerce Platform with Real-time Inventory",
+    skill_name: "Python",
+    image: "python.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "n8n",
+    image: "n8n.png",
+    width: 80,
+    height: 80,
+  },
+] as const;
+
+export const projects = [
+  {
+    title: "E-commerce Platform with Real-time Inventory",
     image: "/projects/project1.jpg",
     link: "https://github.com/sharjeelahmad",
   },
@@ -165,23 +180,7 @@ export const backend_skills = [
   {
     title: "Stripe Payment Integration & Billing Dashboard",
     image: "/projects/project3.jpg",
-    link: "https://github.com/sharjeelahmad
-    title: "ReelSaver – Instagram Reel Downloader & Api",
-    
-    image: "/projects/project2.jpg",
-    link: "https://reelsaver.vercel.app/",
-  },
-  {
-    title: "My Portfolio - HTML & CSS based portfolio ",
-
-    image: "/projects/project1.jpg",
-    link: "https://kinsu.onrender.com",
-  },
-  {
-    title: "EmojiSpot Get Emoji Pngs in different colors",
-   
-    image: "/projects/project3.jpg",
-    link: "https://emojispot.onrender.com/",
+    link: "https://github.com/sharjeelahmad",
   },
 ] as const;
 
