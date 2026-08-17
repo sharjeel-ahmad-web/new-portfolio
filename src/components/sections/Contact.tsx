@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -20,31 +19,62 @@ const staggerContainer = {
   },
 };
 
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
 export const Contact = () => {
-  const form = useRef<HTMLFormElement | null>(null);
+  const form = useState<HTMLFormElement | null>(null);
+  const [formState, setFormState] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    subject: string;
+    message: string;
+  }>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
-    if (form.current) {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
-        )
-        .then(
-          () => {
-            alert("✅ Message sent successfully!");
-            form.current?.reset();
-          },
-          (error) => {
-            console.error(error.text);
-            alert("❌ Failed to send message. Try again later.");
-          }
-        );
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/send-alert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientMessage: `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone || "Not provided"}\nSubject: ${formState.subject || "No subject"}\n\nMessage:\n${formState.message}`,
+          senderEmail: formState.email,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus("success");
+        setFormState({ name: "", email: "", phone: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
     }
   };
 
@@ -149,7 +179,6 @@ export const Contact = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 rounded-2xl blur-xl" />
           
           <form
-            ref={form}
             onSubmit={sendEmail}
             className="relative flex flex-col gap-5 bg-[#0a0a0a]/80 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl"
           >
@@ -158,19 +187,25 @@ export const Contact = () => {
               <div className="relative group">
                 <input
                   type="text"
-                  name="user_name"
+                  name="name"
                   placeholder="Your Name"
                   required
-                  className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-cyan-400 focus:bg-cyan-950/20 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all"
+                  value={formState.name}
+                  onChange={handleChange}
+                  disabled={status === "submitting"}
+                  className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-cyan-400 focus:bg-cyan-950/20 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all disabled:opacity-50"
                 />
               </div>
               <div className="relative group">
                 <input
                   type="email"
-                  name="user_email"
+                  name="email"
                   placeholder="Email Address"
                   required
-                  className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-cyan-400 focus:bg-cyan-950/20 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all"
+                  value={formState.email}
+                  onChange={handleChange}
+                  disabled={status === "submitting"}
+                  className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-cyan-400 focus:bg-cyan-950/20 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all disabled:opacity-50"
                 />
               </div>
             </div>
@@ -179,14 +214,20 @@ export const Contact = () => {
               type="text"
               name="phone"
               placeholder="Phone Number"
-              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-purple-400 focus:bg-purple-950/20 focus:outline-none focus:ring-1 focus:ring-purple-400 transition-all"
+              value={formState.phone}
+              onChange={handleChange}
+              disabled={status === "submitting"}
+              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-purple-400 focus:bg-purple-950/20 focus:outline-none focus:ring-1 focus:ring-purple-400 transition-all disabled:opacity-50"
             />
 
             <input
               type="text"
               name="subject"
               placeholder="Subject"
-              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-purple-400 focus:bg-purple-950/20 focus:outline-none focus:ring-1 focus:ring-purple-400 transition-all"
+              value={formState.subject}
+              onChange={handleChange}
+              disabled={status === "submitting"}
+              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-purple-400 focus:bg-purple-950/20 focus:outline-none focus:ring-1 focus:ring-purple-400 transition-all disabled:opacity-50"
             />
 
             <textarea
@@ -194,21 +235,57 @@ export const Contact = () => {
               placeholder="Your Message"
               rows={5}
               required
-              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-yellow-400 focus:bg-yellow-950/20 focus:outline-none focus:ring-1 focus:ring-yellow-400 transition-all resize-none"
+              value={formState.message}
+              onChange={handleChange}
+              disabled={status === "submitting"}
+              className="w-full px-5 py-4 text-white placeholder-gray-500 bg-white/5 border border-white/10 rounded-xl focus:border-yellow-400 focus:bg-yellow-950/20 focus:outline-none focus:ring-1 focus:ring-yellow-400 transition-all resize-none disabled:opacity-50"
             ></textarea>
+
+            {/* Status Messages */}
+            {status === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400 text-sm text-center"
+              >
+                ✅ Message sent successfully! I&apos;ll get back to you soon.
+              </motion.div>
+            )}
+
+            {status === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm text-center"
+              >
+                ❌ {errorMessage}
+              </motion.div>
+            )}
 
             {/* Button */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="group relative w-full mt-4 px-8 py-4 text-lg font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl shadow-[0_0_20px_rgba(250,204,21,0.3)] hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] overflow-hidden transition-all duration-300"
+              disabled={status === "submitting"}
+              className="group relative w-full mt-4 px-8 py-4 text-lg font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl shadow-[0_0_20px_rgba(250,204,21,0.3)] hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] overflow-hidden transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {/* Shimmer effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+              {status !== "submitting" && (
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+              )}
               <span className="relative z-10 flex items-center justify-center gap-2">
-                Send Message
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                {status === "submitting" ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </>
+                )}
               </span>
             </motion.button>
           </form>

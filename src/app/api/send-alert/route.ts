@@ -8,21 +8,25 @@ import nodemailer from "nodemailer";
  */
 
 // Configure your email service
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-  // Alternatively, use custom SMTP:
-  // host: process.env.SMTP_HOST,
-  // port: parseInt(process.env.SMTP_PORT || "587"),
-  // secure: process.env.SMTP_SECURE === "true",
-  // auth: {
-  //   user: process.env.SMTP_USER,
-  //   pass: process.env.SMTP_PASS,
-  // },
-});
+const useCustomSMTP = process.env.SMTP_HOST;
+
+const transporter = useCustomSMTP
+  ? nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_SECURE === "true",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+  : nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,6 +39,25 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Validate email configuration
+    const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER || process.env.EMAIL_USER;
+    const alertEmail = process.env.ALERT_EMAIL || "chjiimy@gmail.com";
+
+    if (!fromEmail) {
+      console.error("❌ Email configuration error: FROM_EMAIL, SMTP_USER, or EMAIL_USER must be set");
+      return NextResponse.json(
+        { error: "Email configuration error: FROM_EMAIL is not set" },
+        { status: 500 }
+      );
+    }
+
+    console.log("📧 Email config:", {
+      from: fromEmail,
+      to: alertEmail,
+      replyTo: senderEmail || fromEmail,
+      useCustomSMTP: !!process.env.SMTP_HOST,
+    });
 
     // Email content
     const emailContent = `
@@ -56,30 +79,45 @@ export async function POST(req: NextRequest) {
     `;
 
     // Send email to Sharjeel
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.ALERT_EMAIL || "chjiimy@gmail.com",
+    const mailOptions = {
+      from: fromEmail,
+      to: alertEmail,
+      replyTo: senderEmail || fromEmail,
       subject: "🔔 New AI Agent Interaction - Your Portfolio",
       html: emailContent,
       priority: "high",
+    };
+
+    console.log("📧 Sending email with options:", {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      replyTo: mailOptions.replyTo,
+      subject: mailOptions.subject,
     });
 
-    console.log(
-      `✅ Alert sent for message: "${clientMessage.substring(0, 50)}..."`
-    );
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log("✅ Email sent successfully:", info.messageId);
+    console.log("📬 SMTP Response:", info.response);
 
     return NextResponse.json(
-      { success: true, message: "Alert sent successfully" },
+      { 
+        success: true, 
+        message: "Alert sent successfully",
+        messageId: info.messageId,
+        response: info.response,
+      },
       { status: 200 }
     );
   } catch (error: any) {
     console.error("❌ Email alert error:", error);
 
-    // Fallback: Log to database or queue service
-    // TODO: Implement fallback storage (Redis queue, DB backup, etc.)
-
     return NextResponse.json(
-      { error: "Failed to send alert", details: error.message },
+      { 
+        error: "Failed to send alert", 
+        details: error.message,
+        code: error.code,
+      },
       { status: 500 }
     );
   }
@@ -90,6 +128,7 @@ export async function POST(req: NextRequest) {
  * EMAIL_USER=your-email@gmail.com
  * EMAIL_PASSWORD=your-app-password (use Gmail App Passwords, not regular password)
  * ALERT_EMAIL=chjiimy@gmail.com
+ * FROM_EMAIL=verified-sender@yourdomain.com
  *
  * OR for custom SMTP:
  * SMTP_HOST=smtp.example.com
@@ -97,4 +136,5 @@ export async function POST(req: NextRequest) {
  * SMTP_SECURE=false
  * SMTP_USER=user@example.com
  * SMTP_PASS=password
+ * FROM_EMAIL=verified-sender@yourdomain.com
  */

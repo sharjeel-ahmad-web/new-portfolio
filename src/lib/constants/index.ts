@@ -117,12 +117,12 @@ export const socials = [
   {
     name: "LinkedIn",
     icon: FaLinkedin,
-    link: "https://linkedin.com/in/sharjeelahmad/",
+    link: "https://www.linkedin.com/in/sharjeel-ahmad-remote-web-developer-2646361b7/",
   },
   {
     name: "GitHub",
     icon: RxGithubLogo,
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
   {
     name: "Twitter",
@@ -218,22 +218,22 @@ export const projects = [
   {
     title: "E-commerce Platform with Real-time Inventory",
     image: "/projects/project1.jpg",
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
   {
     title: "AI-Powered CRM with n8n Workflow Automation",
     image: "/projects/project2.jpg",
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
   {
     title: "Stripe Payment Integration & Billing Dashboard",
     image: "/projects/project3.jpg",
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
   {
     title: "AI-powered YouTube video summarization & analysis | n8n workflow",
     image: "/projects/project4.png",
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
 ] as const;
 

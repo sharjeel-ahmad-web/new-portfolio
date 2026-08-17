@@ -1,0 +1,74 @@
+{
+  "info": {
+    "_postman_id": "a9c1b2d3-4e5f-6789-abcd-ef0123456789",
+    "name": "Portfolio Website API",
+    "description": "Postman collection for testing AI Agent API endpoints (Gemini + Email Alert)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Gemini AI Chat",
+      "item": [
+        {
+          "name": "POST /api/gemini",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What are Sharjeel's skills?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/gemini",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "gemini"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Email Alerts",
+      "item": [
+        {
+          "name": "POST /api/send-alert",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientMessage\": \"I'm interested in a full-stack project.\",\n  \"senderEmail\": \"client@example.com\",\n  \"timestamp\": \"2026-08-17T18:22:06+05:00\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/send-alert",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "send-alert"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
