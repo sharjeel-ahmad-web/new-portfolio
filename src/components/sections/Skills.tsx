@@ -21,7 +21,7 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center gap-16 py-20 px-4 sm:px-6 lg:px-10"
+      className="relative flex flex-col items-center justify-center gap-16 py-20 px-4 sm:px-6 lg:px-10 bg-dark"
     >
       {/* Heading */}
       <SkillText />
@@ -30,7 +30,7 @@ export const Skills = () => {
       <div className="flex flex-col w-full max-w-6xl gap-12">
         {skillCategories.map(({ title, data, folder }) => (
           <div key={title} className="flex flex-col gap-6">
-            <h3 className="text-xl font-bold text-center text-white md:text-2xl">
+            <h3 className="text-xl font-bold text-center text-cream md:text-2xl" style={{ fontFamily: "'Alex Brush', cursive" }}>
               {title}
             </h3>
             <div className="flex flex-wrap justify-center gap-6">

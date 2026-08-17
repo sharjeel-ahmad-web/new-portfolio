@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import type { PropsWithChildren } from "react";
 
@@ -10,8 +9,6 @@ import { cn } from "@/lib/utils";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 // ⚡ Lazy-load AI Agent to improve initial page load
 const AIAgent = dynamic(() => import("@/components/AIAgent").then(mod => ({ default: mod.AIAgent })), {
   loading: () => null,
@@ -20,7 +17,7 @@ const AIAgent = dynamic(() => import("@/components/AIAgent").then(mod => ({ defa
 
 // ✅ Global viewport theme color
 export const viewport: Viewport = {
-  themeColor: "#030014",
+  themeColor: "#1a1a1a",
 };
 
 // ✅ Global site metadata (SEO)
@@ -60,8 +57,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body
         className={cn(
-          "bg-[#030014] overflow-y-scroll overflow-x-hidden",
-          inter.className
+          "bg-dark overflow-y-scroll overflow-x-hidden font-sans text-gray-200",
         )}
       >
         <StarsCanvas />

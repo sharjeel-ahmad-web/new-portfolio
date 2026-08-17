@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharjeel Ahmad Khan - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #000;
+        }
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .header-text {
+            flex: 1;
+        }
+        h1 {
+            color: #2161b4;
+            font-size: 28px;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        h2 {
+            font-size: 16px;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+        }
+        .contact-info {
+            font-size: 13px;
+            margin: 0;
+        }
+        .contact-info a {
+            color: #2161b4;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .profile-img {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-left: 20px;
+        }
+        .intro-text {
+            font-size: 13px;
+            line-height: 1.3;
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+        .section-header {
+            border-top: 1.5px solid #2161b4;
+            border-bottom: 1.5px solid #2161b4;
+            padding: 3px 0;
+            margin: 10px 0 8px 0;
+        }
+        .section-header h3 {
+            color: #2161b4;
+            font-size: 15px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .summary-text {
+            font-size: 13px;
+            line-height: 1.3;
+            text-align: justify;
+            margin: 0 0 10px 0;
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .expertise-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .expertise-item::before {
+            content: "•";
+            margin-right: 5px;
+        }
+        .accomplishments-list, .experience-list {
+            margin: 0 0 10px 0;
+            padding-left: 20px;
+            font-size: 13px;
+            line-height: 1.3;
+        }
+        .accomplishments-list li, .experience-list li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            margin-top: 8px;
+        }
+        .experience-location {
+            font-size: 13px;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+        .languages-text {
+            font-size: 13px;
+            margin: 0;
+        }
+        .footer {
+            text-align: right;
+            color: #2161b4;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    <div class="header">
+        <div class="header-text">
+            <h1>Sharjeel Ahmad Khan</h1>
+            <h2>Full-Stack Web Developer & AI Integration Specialist</h2>
+            <p class="contact-info">
+                Lahore, Punjab 53701, Pakistan | <a href="mailto:sharjeel.graphics.web@gmail.com">sharjeel.graphics.web@gmail.com</a> | +92 343 6435979 | <a href="#">LinkedIn</a>
+            </p>
+        </div>
+        <img src="download (2).png" alt="Profile Picture" class="profile-img">
+    </div>
+
+    <p class="intro-text">
+        I specialize in building custom, high-converting web applications and eliminating operational data silos through advanced workflow automations. With hands-on experience architecting secure systems for platforms like Barie.ai and integrating over 250+ enterprise APIs using OAuth 2.0 and PKCE flows, I don't just write code—I build secure, scalable tech infrastructures that drive revenue. From RESTful and GraphQL API Design to complex n8n workflows, my focus is on delivering performance-driven results
+    </p>
+
+    <div class="section-header">
+        <h3>Professional Summary</h3>
+    </div>
+    <p class="summary-text">
+        Full-Stack Web Developer & AI Integration Specialist | Lahore, Pakistan • Led backend architecture for Barie.ai (conversational AI platform); engineered integrations for 256+ enterprise APIs (Salesforce, Stripe, Google Workspace, Chargebee, Slack) • Implemented enterprise-grade security (OAuth 2.0, PKCE flows) and webhook event listeners; built Laravel MVC services for enterprise scalability • Built full-stack applications with React, Node.js, Express, MongoDB; implemented Context API, React Router, and Next.js server-side rendering • Delivered production-grade REST APIs, responsive UI components, and database optimization for high-performance applications • Architected enterprise-scale systems handling 256+ API integrations with zero data silos | Passion for building lightning-fast digital ecosystems and automating complex workflows
+    </p>
+
+    <div class="section-header">
+        <h3>Areas of Expertise</h3>
+    </div>
+    <div class="expertise-grid">
+        <!-- Column 1 -->
+        <div class="expertise-col">
+            <div class="expertise-item">RESTful & GraphQL APIs</div>
+            <div class="expertise-item">API Integrations (256+)</div>
+            <div class="expertise-item">Tailwind CSS</div>
+            <div class="expertise-item">Shopify</div>
+            <div class="expertise-item">Laravel (MVC)</div>
+            <div class="expertise-item">Mongoose</div>
+            <div class="expertise-item">Stripe API</div>
+        </div>
+        <!-- Column 2 -->
+        <div class="expertise-col">
+            <div class="expertise-item">OAuth 2.0 & PKCE</div>
+            <div class="expertise-item">Database Design</div>
+            <div class="expertise-item">JavaScript (ES6+)</div>
+            <div class="expertise-item">WordPress</div>
+            <div class="expertise-item">Python</div>
+            <div class="expertise-item">Git & GitHub</div>
+            <div class="expertise-item">Salesforce</div>
+        </div>
+        <!-- Column 3 -->
+        <div class="expertise-col">
+            <div class="expertise-item">System Architecture</div>
+            <div class="expertise-item">React</div>
+            <div class="expertise-item">HTML5</div>
+            <div class="expertise-item">Node.js</div>
+            <div class="expertise-item">MongoDB</div>
+            <div class="expertise-item">Docker</div>
+            <div class="expertise-item">Google Workspace</div>
+        </div>
+        <!-- Column 4 -->
+        <div class="expertise-col">
+            <div class="expertise-item">n8n Automation</div>
+            <div class="expertise-item">Next.js 14</div>
+            <div class="expertise-item">CSS3</div>
+            <div class="expertise-item">Express.js</div>
+            <div class="expertise-item">MySQL</div>
+            <div class="expertise-item">Postman</div>
+            <div class="expertise-item">Firebase</div>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h3>Accomplishments</h3>
+    </div>
+    <ul class="accomplishments-list">
+        <li>Architected the backend for Barie.ai and integrated 256+ enterprise APIs (Salesforce, Stripe, Google Workspace, Chargebee, Slack) to eliminate data silos and enable unified conversational workflows.</li>
+        <li>Designed and implemented OAuth 2.0 (PKCE) authentication flows and webhook event listeners, delivering enterprise-grade security for third-party integrations.</li>
+        <li>Built scalable Laravel MVC microservices and production-grade REST APIs; optimized MongoDB and MySQL schemas and queries for high-throughput environments.</li>
+        <li>Developed full-stack applications using React, Next.js (SSR), Context API and Tailwind—shipping responsive UI components and improving front-end performance and developer velocity.</li>
+        <li>Automated complex workflows with n8n and custom integrations, accelerating API onboarding and reducing manual operational overhead.</li>
+    </ul>
+
+    <div class="section-header">
+        <h3>Professional Experience</h3>
+    </div>
+    
+    <div class="experience-header">
+        <span>Full-Stack & AI Integration Developer, Programmers Force</span>
+        <span>Jan 2026 to Jun 2026</span>
+    </div>
+    <div class="experience-location">Lahore, Pakistan</div>
+    <ul class="experience-list">
+        <li>Led backend architecture for Barie.ai (conversational AI platform); engineered integrations for 256+ enterprise APIs (Salesforce, Stripe, Google Workspace, Chargebee, Slack)</li>
+        <li>Implemented enterprise-grade security (OAuth 2.0, PKCE flows) and webhook event listeners; built Laravel MVC services for enterprise scalability</li>
+    </ul>
+
+    <div class="experience-header">
+        <span>MERN Stack Developer, Soft Enterprise & Logictech</span>
+        <span>2025 to 2026</span>
+    </div>
+    <div class="experience-location">Lahore, Pakistan</div>
+    <ul class="experience-list">
+        <li>Built full-stack applications with React, Node.js, Express, MongoDB; implemented Context API, React Router, and Next.js server-side rendering</li>
+        <li>Delivered production-grade REST APIs, responsive UI components, and database optimization for high-performance applications</li>
+    </ul>
+
+    <div class="section-header">
+        <h3>Languages</h3>
+    </div>
+    <p class="languages-text">
+        English | Urdu | Punjabi
+    </p>
+
+    <div class="footer">
+        Page 1
+    </div>
+</div>
+
+</body>
+</html>

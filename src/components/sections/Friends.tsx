@@ -44,8 +44,8 @@ const friends: Friend[] = [
 
 export const Friends = () => {
   return (
-    <section className="w-full py-16 px-6 md:px-12 max-w-5xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
+    <section className="w-full py-16 px-6 md:px-12 max-w-5xl mx-auto text-center bg-dark">
+      <h2 className="text-3xl md:text-4xl font-bold text-cream mb-12" style={{ fontFamily: "'Alex Brush', cursive" }}>
         Friends Crew
       </h2>
 
@@ -78,26 +78,24 @@ export const Friends = () => {
                 alt={friend.name}
                 width={120}
                 height={120}
-                className="rounded-full border-4 border-yellow-400 shadow-lg"
+                className="border-4 border-brand"
               />
 
               {/* Name & Role */}
-              <h3 className="text-xl font-semibold text-white mt-4">
+              <h3 className="text-xl font-semibold text-cream mt-4" style={{ fontFamily: "'Times New Roman', serif" }}>
                 {friend.name}
               </h3>
-              <p className="text-gray-400 text-sm">{friend.role}</p>
+              <p className="text-gray-400 text-sm" style={{ fontFamily: "'Times New Roman', serif" }}>{friend.role}</p>
 
-              {/* Description with pointer */}
+              {/* Description */}
               <div className="relative mt-2 max-w-md w-full mx-auto">
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-yellow-400" />
-
-                <p className="bg-[#111111cc] text-white px-6 py-4 rounded-xl text-sm md:text-base leading-relaxed">
+                <p className="bg-dark text-cream px-6 py-4 text-sm md:text-base leading-relaxed border border-cream/10" style={{ fontFamily: "'Times New Roman', serif" }}>
                   {friend.description}{" "}
                   <a
                     href={friend.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-yellow-400 hover:text-yellow-300 font-semibold"
+                    className="text-brand hover:text-cream font-semibold transition-all"
                   >
                     Know More..
                   </a>
@@ -119,10 +117,9 @@ export const Friends = () => {
           width: 10px;
           height: 10px;
           margin: 0 6px !important;
-          border-radius: 50%;
         }
         .friends-pagination .swiper-pagination-bullet-active {
-          background: #facc15 !important; /* yellow */
+          background: #fc4c00 !important;
           width: 12px;
           height: 12px;
         }

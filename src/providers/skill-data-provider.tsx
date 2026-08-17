@@ -43,7 +43,7 @@ export const SkillDataProvider = ({
       whileHover={{ scale: 1.15, y: -6 }}
       className="relative group"
     >
-      <div className="relative p-3 rounded-2xl bg-slate-800/60 border border-slate-700/40 backdrop-blur-sm transition-all duration-300 group-hover:border-purple-500/60 group-hover:bg-slate-800/90 group-hover:shadow-[0_10px_30px_rgba(139,92,246,0.2)] cursor-default">
+      <div className="relative p-3 bg-cream border border-brand/20 transition-all duration-300 group-hover:border-brand group-hover:bg-cream/90 cursor-default">
         <Image
           src={`/${folder}/${src}`}
           width={width}
@@ -52,9 +52,9 @@ export const SkillDataProvider = ({
           className="transition-transform duration-300 group-hover:scale-110"
         />
         {/* Tooltip */}
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900 border border-purple-500/40 rounded-lg text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20 shadow-lg">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-dark border border-brand/40 text-xs text-cream whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
           {name}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-slate-900" />
+          <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-dark" />
         </div>
       </div>
     </motion.div>

@@ -9,11 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "rgb(112,66,248)", // your purple highlight
-        dark: "#030014",
+        brand: "#fc4c00",
+        cream: "#ffe8c1",
+        dark: "#1a1a1a",
+        charcoal: "#333333",
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui"], // matches your layout.tsx
+        sans: ["'Times New Roman'", "ui-sans-serif", "system-ui"],
+        luxurious: ["'Alex Brush'", "cursive"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

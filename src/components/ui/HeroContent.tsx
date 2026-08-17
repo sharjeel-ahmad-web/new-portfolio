@@ -1,101 +1,107 @@
 "use client";
 
-import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/lib/motion";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const HeroContent = () => {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      className="relative flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 mt-16 md:mt-40 w-full z-[20]"
-    >
-      {/* === Background Ambient Glow === */}
-      <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse delay-700" />
+    <div className="relative flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 mt-16 md:mt-40 w-full z-[20] min-h-screen">
+      {/* Subtle zoom background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/[0.04] animate-heroZoom" />
+      </div>
 
-      {/* === Left Content === */}
-      <div className="w-full flex flex-col gap-5 justify-center m-auto text-center md:text-start relative z-10">
-        
+      {/* Left Content */}
+      <div className="w-full flex flex-col gap-6 justify-center m-auto text-center md:text-start relative z-10">
         {/* Role Badge */}
         <motion.div
-          variants={slideInFromTop}
-          whileHover={{ scale: 1.05 }}
-          className="group flex items-center justify-center md:justify-start gap-2 py-[8px] px-[12px] border border-[#7042f88b] bg-[#0300145e] backdrop-blur-md opacity-[0.9] rounded-full max-w-full md:max-w-fit mx-auto md:mx-0 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300 cursor-pointer"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="border border-brand/40 bg-brand/10 px-4 py-2 max-w-full md:max-w-fit mx-auto md:mx-0"
         >
-          <SparklesIcon className="text-[#b49bff] h-4 w-4 md:h-5 md:w-5 group-hover:animate-spin" />
-          <h1 className="text-[12px] md:text-[13px] text-gray-200 font-medium tracking-wide">
-            🚀 Remote Web Developer & AI Integration Specialist
-          </h1>
+          <p
+            className="text-xs md:text-sm text-brand font-medium tracking-widest uppercase"
+            style={{ fontFamily: "'Times New Roman', serif" }}
+          >
+            Remote Web Developer & AI Integration Specialist
+          </p>
         </motion.div>
 
-        {/* Hero Heading */}
+        {/* Hero Heading - Name in Luxurious Script */}
         <motion.h1
-          variants={slideInFromLeft(0.5)}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white max-w-[600px] leading-[1.15]"
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
+          className="text-5xl sm:text-6xl md:text-7xl leading-tight"
+          style={{ fontFamily: "'Alex Brush', cursive" }}
         >
-          Build{" "}
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">
-            Lightning-Fast
-          </span>{" "}
-          Digital{" "}
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite_reverse]">
-            Ecosystems
-          </span>
+          <span className="text-cream">Sharjeel</span>{" "}
+          <span className="text-brand">Ahmad</span>
         </motion.h1>
 
-        {/* Description */}
+        {/* Subheadings - Times New Roman slide up with stagger */}
         <motion.p
-          variants={slideInFromLeft(0.8)}
-          className="text-base sm:text-lg text-gray-300 my-3 sm:my-5 max-w-[550px] mx-auto md:mx-0 leading-relaxed border-l-2 border-transparent md:border-purple-500/50 md:pl-4 transition-all duration-300 hover:border-cyan-400"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          className="text-base sm:text-lg md:text-xl text-gray-300 max-w-[550px] mx-auto md:mx-0 leading-relaxed"
+          style={{ fontFamily: "'Times New Roman', serif" }}
         >
-          I architect secure, scalable systems for e-commerce brands. Custom Next.js/MERN apps, enterprise API integrations (Stripe, Salesforce), and intelligent n8n automations that transform manual workflows into automated powerhouses.
+          Architecting secure, scalable digital ecosystems for e-commerce brands. Custom Next.js/MERN applications, enterprise API integrations, and intelligent workflow automations.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+          className="text-sm text-gray-400 max-w-[500px] mx-auto md:mx-0"
+          style={{ fontFamily: "'Times New Roman', serif" }}
+        >
+          Lahore, Pakistan | BSSE in Artificial Intelligence
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div variants={slideInFromLeft(1)}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          className="mt-4"
+        >
           <a
             href="#contact"
-            className="group relative flex items-center justify-center gap-2 py-3 px-8 bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-sm sm:text-base font-bold rounded-full shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all duration-300 max-w-[180px] sm:max-w-[240px] mx-auto md:mx-0 overflow-hidden"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base sm:text-lg font-bold text-white bg-brand overflow-hidden transition-all duration-300 hover:text-black max-w-[200px] sm:max-w-[240px] mx-auto md:mx-0"
+            style={{ fontFamily: "'Times New Roman', serif" }}
           >
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 z-0"></div>
-            
-            <span className="relative z-10">Start Your Project</span>
-            <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 relative z-10 transition-transform group-hover:translate-x-1.5" />
+            <span className="absolute inset-0 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            <span className="relative z-10 flex items-center gap-2">
+              Start Your Project
+              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
+            </span>
           </a>
         </motion.div>
       </div>
 
-      {/* === Right Image with Bulb Behind === */}
+      {/* Right Image with Bulb Behind */}
       <motion.div
-        variants={slideInFromRight(0.8)}
-        className="relative w-full flex justify-center items-center mt-12 md:mt-0 min-h-[400px] md:min-h-[500px]"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+        className="relative w-full flex justify-center items-center mt-12 md:mt-0 min-h-[300px] md:min-h-[500px]"
       >
-        {/* Bulb (Background) - Added glowing and pulsing animation */}
-        <motion.div
-          animate={{ 
-            opacity: [0.4, 0.8, 0.4],
-            scale: [0.95, 1.05, 0.95],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute z-0 flex items-center justify-center"
-        >
-          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute z-0 flex items-center justify-center">
           <Image
             src="/bulb.png"
             alt="Bulb"
             width={500}
             height={500}
             draggable={false}
-            className="select-none object-contain opacity-80 mix-blend-screen w-36 h-36 sm:w-44 sm:h-44 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]"
+            className="select-none object-contain opacity-60 mix-blend-screen w-36 h-36 sm:w-44 sm:h-44 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]"
           />
-        </motion.div>
+        </div>
 
-        {/* Foreground Hero Icon (SVG) - Added levitating animation */}
+        {/* Foreground Hero Icon */}
         <motion.div
           animate={{ y: [-15, 15, -15] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -107,22 +113,10 @@ export const HeroContent = () => {
             height={500}
             width={500}
             draggable={false}
-            className="select-none drop-shadow-[0_15px_15px_rgba(0,0,0,0.5)] sm:h-[450px] sm:w-[450px] md:h-[500px] md:w-[500px]"
+            className="select-none w-36 h-36 sm:w-44 sm:h-44 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]"
           />
         </motion.div>
       </motion.div>
-
-      {/* Tailwind Custom Animation Styles */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
-        }
-      `}} />
-    </motion.div>
+    </div>
   );
 };

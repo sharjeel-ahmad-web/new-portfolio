@@ -18,12 +18,10 @@ export const AIAgent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Initialize greeting
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       const greeting: Message = {
@@ -37,7 +35,6 @@ export const AIAgent = () => {
     }
   }, [isOpen, messages.length]);
 
-  // Handle sending message
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -70,7 +67,6 @@ export const AIAgent = () => {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Send email alert to Sharjeel
       await sendClientAlert(inputValue);
     } catch (error) {
       const errorMessage: Message = {
@@ -85,7 +81,6 @@ export const AIAgent = () => {
     }
   };
 
-  // Send email alert when client interacts
   const sendClientAlert = async (clientMessage: string) => {
     try {
       await fetch("/api/send-alert", {
@@ -102,21 +97,75 @@ export const AIAgent = () => {
     }
   };
 
-  // Schedule meeting handler
   const handleScheduleMeeting = () => {
     window.open("https://calendly.com/sharjeel", "_blank");
   };
 
   return (
     <>
+      {/* Chat Bubble */}
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+            }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ 
+              duration: 0.4, 
+              ease: "easeOut",
+            }}
+            className="fixed bottom-24 right-6 z-40 w-80 max-w-[calc(100vw-48px)]"
+          >
+            <motion.div
+              animate={{ 
+                y: [0, -8, 0],
+              }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity, 
+                ease: "easeInOut",
+              }}
+              className="bg-dark border border-cream/10 p-5 shadow-2xl"
+              style={{ fontFamily: "'Times New Roman', serif" }}
+            >
+              <div className="flex items-center gap-2 mb-3 border-b border-cream/10 pb-2">
+                <div className="w-2 h-2 bg-brand animate-pulse"></div>
+                <span className="text-sm font-bold text-cream" style={{ fontFamily: "'Alex Brush', cursive" }}>
+                  Storefront AI Assistant
+                </span>
+              </div>
+              <p className="text-sm text-gray-300 mb-4">
+                Hi! I can analyze your current store&apos;s speed or show you the latest Next.js case studies. What are you looking for?
+              </p>
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => setIsOpen(true)}
+                  className="text-xs font-semibold bg-brand text-dark px-3 py-1.5 hover:bg-cream transition-all"
+                >
+                  Check Portfolio
+                </button>
+                <button 
+                  onClick={() => setIsOpen(true)}
+                  className="text-xs font-semibold bg-dark border border-cream/10 text-cream px-3 py-1.5 hover:border-brand hover:text-brand transition-all"
+                >
+                  View Projects
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Button */}
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 p-4 rounded-full shadow-2xl
-          bg-gradient-to-r from-purple-600 to-cyan-500 hover:shadow-purple-500/50
-          text-white transition-all duration-300"
+        className="fixed bottom-6 right-6 z-50 p-4 bg-brand text-dark transition-all duration-300"
       >
         {isOpen ? (
           <X className="w-6 h-6" />
@@ -132,21 +181,20 @@ export const AIAgent = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)] 
-              bg-slate-900 border border-purple-500/30 rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)]
+              bg-dark border border-cream/10 overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-4 text-white">
-              <h3 className="font-bold text-lg">{`🤖 Sharjeel's AI Assistant`}</h3>
-              <p className="text-xs opacity-90">
+            <div className="bg-brand p-4 text-dark">
+              <h3 className="font-bold text-lg" style={{ fontFamily: "'Alex Brush', cursive" }}>{`🤖 Sharjeel's AI Assistant`}</h3>
+              <p className="text-xs opacity-90" style={{ fontFamily: "'Times New Roman', serif" }}>
                 Powered by Gemini AI - Full portfolio knowledge
               </p>
             </div>
 
             {/* Messages Container */}
             <div
-              className="h-80 overflow-y-auto p-4 space-y-4 bg-slate-950
-              scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-slate-900"
+              className="h-80 overflow-y-auto p-4 space-y-4 bg-dark"
             >
               {messages.map((msg) => (
                 <div
@@ -156,11 +204,12 @@ export const AIAgent = () => {
                   }`}
                 >
                   <div
-                    className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
+                    className={`max-w-xs px-4 py-2 text-sm ${
                       msg.role === "user"
-                        ? "bg-gradient-to-r from-purple-600 to-cyan-500 text-white"
-                        : "bg-slate-800 text-gray-200 border border-purple-500/30"
+                        ? "bg-brand text-dark"
+                        : "bg-dark border border-cream/10 text-gray-200"
                     }`}
+                    style={{ fontFamily: "'Times New Roman', serif" }}
                   >
                     {msg.content}
                   </div>
@@ -169,18 +218,18 @@ export const AIAgent = () => {
 
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-slate-800 border border-purple-500/30 px-4 py-2 rounded-lg">
+                  <div className="bg-dark border border-cream/10 px-4 py-2">
                     <div className="flex gap-2">
                       <div
-                        className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce"
+                        className="w-2 h-2 bg-brand animate-bounce"
                         style={{ animationDelay: "0ms" }}
                       />
                       <div
-                        className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce"
+                        className="w-2 h-2 bg-brand animate-bounce"
                         style={{ animationDelay: "150ms" }}
                       />
                       <div
-                        className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce"
+                        className="w-2 h-2 bg-brand animate-bounce"
                         style={{ animationDelay: "300ms" }}
                       />
                     </div>
@@ -193,14 +242,14 @@ export const AIAgent = () => {
 
             {/* Action Buttons */}
             <div
-              className="bg-slate-900 border-t border-purple-500/30 p-3 space-y-2"
+              className="bg-dark border-t border-cream/10 p-3 space-y-2"
             >
               <div className="flex gap-2">
                 <button
                   onClick={handleScheduleMeeting}
                   className="flex-1 flex items-center justify-center gap-2 px-3 py-2
-                    bg-slate-800 hover:bg-slate-700 text-xs text-white rounded-lg
-                    border border-cyan-500/30 transition-all"
+                    bg-dark border border-cream/10 text-xs text-cream hover:border-brand hover:bg-brand/10 transition-all"
+                  style={{ fontFamily: "'Times New Roman', serif" }}
                 >
                   <Calendar className="w-4 h-4" />
                   Schedule Call
@@ -210,8 +259,8 @@ export const AIAgent = () => {
                     (window.location.href = "mailto:chjiimy@gmail.com")
                   }
                   className="flex-1 flex items-center justify-center gap-2 px-3 py-2
-                    bg-slate-800 hover:bg-slate-700 text-xs text-white rounded-lg
-                    border border-purple-500/30 transition-all"
+                    bg-dark border border-cream/10 text-xs text-cream hover:border-brand hover:bg-brand/10 transition-all"
+                  style={{ fontFamily: "'Times New Roman', serif" }}
                 >
                   <Mail className="w-4 h-4" />
                   Email Me
@@ -220,23 +269,20 @@ export const AIAgent = () => {
             </div>
 
             {/* Input Area */}
-            <div className="bg-slate-900 border-t border-purple-500/30 p-3 flex gap-2">
+            <div className="bg-dark border-t border-cream/10 p-3 flex gap-2">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                 placeholder="Ask me anything..."
-                className="flex-1 px-3 py-2 bg-slate-800 text-white text-sm rounded-lg
-                  border border-purple-500/30 focus:border-cyan-500 outline-none
-                  placeholder-gray-500 transition-all"
+                className="flex-1 px-3 py-2 bg-dark text-cream text-sm border border-cream/10 focus:border-brand outline-none placeholder-gray-500 transition-all"
+                style={{ fontFamily: "'Times New Roman', serif" }}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isLoading}
-                className="p-2 bg-gradient-to-r from-purple-600 to-cyan-500
-                  text-white rounded-lg hover:shadow-lg disabled:opacity-50
-                  transition-all"
+                className="p-2 bg-brand text-dark hover:bg-cream transition-all disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </button>
