@@ -62,7 +62,7 @@ export const Footer = () => {
 
         {/* Footer bottom */}
         <div className="text-xs sm:text-sm text-center text-gray-400">
-          &copy; {new Date().getFullYear()} Kinsu Rajput — All rights reserved.
+          &copy; {new Date().getFullYear()} Sharjeel Ahmad — All rights reserved.
         </div>
       </div>
     </footer>

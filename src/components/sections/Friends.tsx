@@ -17,15 +17,15 @@ interface Friend {
 
 const friends: Friend[] = [
   {
-    name: "Karan Anand",
+    name: "Sara",
     role: "Dev, Editor, Gamer",
     img: "/friends/karan.svg",
     description:
-      "🔥 I am Karan. Pro Gamer person, BCA Student from 🇮🇳. I like doing funny things & I am a Super Rider.",
+      "🔥 I am Sara. Pro Gamer person, BCA Student from 🇮🇳. I like doing funny things & I am a Super Rider.",
     link: "#",
   },
   {
-    name: "Harshit",
+    name: "Salman",
     role: "Designer & Artist",
     img: "/friends/harshit.svg",
     description:
@@ -33,7 +33,7 @@ const friends: Friend[] = [
     link: "#",
   },
   {
-    name: "Arpit Aryan",
+    name: "Aithsham ul huq",
     role: "Tech Enthusiast",
     img: "/friends/arpit.svg",
     description:

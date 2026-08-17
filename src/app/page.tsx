@@ -1,11 +1,13 @@
 import { Hero } from "@/components/sections/Hero";
-import { Projects } from "@/components/sections/Projects";
-import { Skills } from "@/components/sections/Skills";
-import { Profilecard } from "@/components/sections/Profilecard";
-import { AboutMe } from "@/components/sections/AboutMe";
-import { Experience } from "@/components/sections/Experience";
-import { Friends } from "@/components/sections/Friends";
-import { Contact } from "@/components/sections/Contact";
+import {
+  Profilecard,
+  AboutMe,
+  Experience,
+  Skills,
+  Friends,
+  Projects,
+  Contact,
+} from "@/components/sections";
 
 export default function Home() {
   return (

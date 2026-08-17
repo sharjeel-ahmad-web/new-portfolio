@@ -11,46 +11,12 @@ interface Message {
   timestamp: Date;
 }
 
-interface ServiceData {
-  type: "portfolio" | "skills" | "projects" | "services" | "contact";
-  content: string;
-}
-
 export const AIAgent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Portfolio knowledge base (RAG)
-  const portfolioData: ServiceData[] = [
-    {
-      type: "portfolio",
-      content:
-        "I'm Sharjeel Ahmad, a Remote Web Developer & AI Integration Specialist from Lahore, Pakistan. I help e-commerce brands scale with custom Next.js/MERN applications and n8n workflow automations.",
-    },
-    {
-      type: "skills",
-      content:
-        "Core Skills: RESTful & GraphQL API Design, Error Handling, System Logging, n8n Workflows. Frontend: React, Next.js 14, Tailwind, Shopify, WordPress. Backend: Node.js, Express, MongoDB (MERN), Laravel, Python.",
-    },
-    {
-      type: "services",
-      content:
-        "Services: Custom web application development, Enterprise API integrations (Stripe, Salesforce), n8n workflow automation, System architecture & design, Database optimization, Real-time inventory management.",
-    },
-    {
-      type: "projects",
-      content:
-        "Recent Projects: E-commerce Platform with Real-time Inventory, AI-Powered CRM with n8n Automation, Stripe Payment Integration & Billing Dashboard.",
-    },
-    {
-      type: "contact",
-      content:
-        "You can reach me at chjiimy@gmail.com or book a consultation call. I'm available for freelance, contract, and full-time remote positions.",
-    },
-  ];
 
   // Auto-scroll to latest message
   useEffect(() => {
@@ -64,81 +30,17 @@ export const AIAgent = () => {
         id: "greeting",
         role: "assistant",
         content:
-          "👋 Hi! I'm Sharjeel's AI Assistant. I can help you with questions about my services, skills, projects, or schedule a consultation. What would you like to know?",
+          "👋 Hi! I'm Sharjeel's AI Assistant powered by Gemini. I have full knowledge of his portfolio - skills, projects, services, and background. What would you like to know?",
         timestamp: new Date(),
       };
       setMessages([greeting]);
     }
   }, [isOpen, messages.length]);
 
-  // Semantic search in knowledge base
-  const searchKnowledgeBase = (query: string): string => {
-    const lowerQuery = query.toLowerCase();
-
-    // Keyword matching for relevant responses
-    if (
-      lowerQuery.includes("skill") ||
-      lowerQuery.includes("technology") ||
-      lowerQuery.includes("stack")
-    ) {
-      return (
-        portfolioData.find((d) => d.type === "skills")?.content ||
-        "I work with React, Node.js, Next.js, MongoDB, and more!"
-      );
-    }
-
-    if (
-      lowerQuery.includes("project") ||
-      lowerQuery.includes("work") ||
-      lowerQuery.includes("portfolio")
-    ) {
-      return (
-        portfolioData.find((d) => d.type === "projects")?.content ||
-        "Check out my recent projects on GitHub!"
-      );
-    }
-
-    if (
-      lowerQuery.includes("service") ||
-      lowerQuery.includes("build") ||
-      lowerQuery.includes("develop") ||
-      lowerQuery.includes("api")
-    ) {
-      return (
-        portfolioData.find((d) => d.type === "services")?.content ||
-        "I specialize in custom web development and API integrations!"
-      );
-    }
-
-    if (
-      lowerQuery.includes("contact") ||
-      lowerQuery.includes("email") ||
-      lowerQuery.includes("call") ||
-      lowerQuery.includes("meeting")
-    ) {
-      return portfolioData.find((d) => d.type === "contact")?.content ||
-        "You can email me at chjiimy@gmail.com or book a call!";
-    }
-
-    if (
-      lowerQuery.includes("who") ||
-      lowerQuery.includes("about") ||
-      lowerQuery.includes("introduce")
-    ) {
-      return (
-        portfolioData.find((d) => d.type === "portfolio")?.content ||
-        "I'm a full-stack developer specialized in MERN and Next.js!"
-      );
-    }
-
-    return "I can help with questions about my skills, projects, services, or how to get in touch. What would you like to know?";
-  };
-
   // Handle sending message
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
@@ -150,30 +52,43 @@ export const AIAgent = () => {
     setInputValue("");
     setIsLoading(true);
 
-    // Simulate RAG response delay
-    setTimeout(async () => {
-      // Get response from knowledge base
-      const responseContent = searchKnowledgeBase(userMessage.content);
+    try {
+      const response = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: inputValue }),
+      });
+
+      const data = await response.json();
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: responseContent,
+        content: data.message || data.error || "I'm sorry, I couldn't process your request. Please try again.",
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-      setIsLoading(false);
 
       // Send email alert to Sharjeel
-      await sendClientAlert(userMessage.content);
-    }, 1000);
+      await sendClientAlert(inputValue);
+    } catch (error) {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "I'm having trouble connecting right now. Please try again or contact Sharjeel directly at chjiimy@gmail.com",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Send email alert when client interacts
   const sendClientAlert = async (clientMessage: string) => {
     try {
-      const response = await fetch("/api/send-alert", {
+      await fetch("/api/send-alert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -182,10 +97,6 @@ export const AIAgent = () => {
           timestamp: new Date().toISOString(),
         }),
       });
-
-      if (response.ok) {
-        console.log("✅ Alert sent to Sharjeel");
-      }
     } catch (err) {
       console.log("Email alert queued locally");
     }
@@ -228,7 +139,7 @@ export const AIAgent = () => {
             <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-4 text-white">
               <h3 className="font-bold text-lg">{`🤖 Sharjeel's AI Assistant`}</h3>
               <p className="text-xs opacity-90">
-                Powered by RAG - Always learning
+                Powered by Gemini AI - Full portfolio knowledge
               </p>
             </div>
 

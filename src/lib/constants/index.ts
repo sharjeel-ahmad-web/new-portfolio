@@ -110,12 +110,7 @@ export const skills = [
     width: 80,
     height: 80,
   },
-  {
-    skill_name: "Go",
-    image: "go.png",
-    width: 80,
-    height: 80,
-  },
+  
 ] as const;
 
 export const socials = [
@@ -216,6 +211,11 @@ export const backend_skills = [
 
 export const projects = [
   {
+    title: "Integrate 250+ connectors with Barie.ai that is AI agent",
+    image: "/projects/project5.png",
+    link: "https://barie.ai/",
+  },
+  {
     title: "E-commerce Platform with Real-time Inventory",
     image: "/projects/project1.jpg",
     link: "https://github.com/sharjeelahmad",
@@ -228,6 +228,11 @@ export const projects = [
   {
     title: "Stripe Payment Integration & Billing Dashboard",
     image: "/projects/project3.jpg",
+    link: "https://github.com/sharjeelahmad",
+  },
+  {
+    title: "AI-powered YouTube video summarization & analysis | n8n workflow",
+    image: "/projects/project4.png",
     link: "https://github.com/sharjeelahmad",
   },
 ] as const;
@@ -250,8 +255,9 @@ export const navlinks = [
     link: "#contact",
   },
   {
-    title: "Source Code",
-    link: "https://github.com/pyKinsu/NextJs-Portfolio",
+    title: "Experience",
+    link: "#experience",
   },
+  
   
 ] as const;
