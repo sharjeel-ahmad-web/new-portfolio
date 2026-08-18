@@ -35,7 +35,7 @@ export const Footer = () => {
         {/* Social icons row */}
         <div className="flex items-center justify-center space-x-6 sm:space-x-8 mb-6">
           <Link
-            href="https://github.com/pykinsu"
+            href="https://github.com/sharjeel-ahmad-web"
             target="_blank"
             rel="noreferrer noopener"
             className="hover:text-brand transition duration-300"
@@ -43,7 +43,7 @@ export const Footer = () => {
             <FaGithub size={22} />
           </Link>
           <Link
-            href="https://linkedin.com/in/pykinsu"
+            href="https://www.linkedin.com/in/sharjeel-ahmad-remote-web-developer-2646361b7/"
             target="_blank"
             rel="noreferrer noopener"
             className="hover:text-brand transition duration-300"
@@ -51,7 +51,7 @@ export const Footer = () => {
             <FaLinkedin size={22} />
           </Link>
           <Link
-            href="https://twitter.com/pykinsu"
+            href="https://x.com/JimmyKlair"
             target="_blank"
             rel="noreferrer noopener"
             className="hover:text-brand transition duration-300"

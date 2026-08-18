@@ -118,7 +118,7 @@ export const AIAgent = () => {
               duration: 0.4, 
               ease: "easeOut",
             }}
-            className="fixed bottom-24 right-6 z-40 w-80 max-w-[calc(100vw-48px)]"
+            className="fixed bottom-24 right-6 z-40 w-80 max-w-[calc(100vw-48px)] hidden md:block"
           >
             <motion.div
               animate={{ 

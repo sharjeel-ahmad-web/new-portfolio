@@ -5,7 +5,7 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="flex flex-col items-center justify-center py-20 bg-dark"
+      className="flex flex-col items-center justify-center py-20 "
     >
       <h1 className="text-[40px] font-semibold text-cream py-20" style={{ fontFamily: "'Alex Brush', cursive" }}>
         My Projects

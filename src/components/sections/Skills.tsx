@@ -21,7 +21,7 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center gap-16 py-20 px-4 sm:px-6 lg:px-10 bg-dark"
+      className="relative flex flex-col items-center justify-center gap-16 py-20 px-4 sm:px-6 lg:px-10 "
     >
       {/* Heading */}
       <SkillText />

@@ -117,12 +117,12 @@ export const socials = [
   {
     name: "LinkedIn",
     icon: FaLinkedin,
-    link: "https://linkedin.com/in/sharjeelahmad/",
+    link: "https://www.linkedin.com/in/sharjeel-ahmad-remote-web-developer-2646361b7/",
   },
   {
     name: "GitHub",
     icon: RxGithubLogo,
-    link: "https://github.com/sharjeelahmad",
+    link: "https://github.com/sharjeel-ahmad-web",
   },
   {
     name: "Twitter",

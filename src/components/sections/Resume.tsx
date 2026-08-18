@@ -266,7 +266,7 @@ export const Resume = () => {
   return (
     <section
       id="resume"
-      className="relative w-full py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden bg-dark"
+      className="relative w-full py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden "
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}

@@ -44,7 +44,7 @@ const friends: Friend[] = [
 
 export const Friends = () => {
   return (
-    <section className="w-full py-16 px-6 md:px-12 max-w-5xl mx-auto text-center bg-dark">
+    <section className="w-full py-16 px-6 md:px-12 max-w-5xl mx-auto text-center ">
       <h2 className="text-3xl md:text-4xl font-bold text-cream mb-12" style={{ fontFamily: "'Alex Brush', cursive" }}>
         Friends Crew
       </h2>

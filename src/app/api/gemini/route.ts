@@ -9,8 +9,8 @@ ABOUT SHARJEEL:
 - Role: Remote Web Developer & AI Integration Specialist
 - Location: Lahore, Pakistan
 - Specialization: Helps e-commerce brands scale with custom Next.js/MERN applications and n8n workflow automations
-- Contact: chjiimy@gmail.com
-- Calendly: https://calendly.com/sharjeel
+- Contact: sharjeel.graphics.web@gmail.com
+- Calendly: https://calendly.com/chjiimy
 
 SKILLS:
 Frontend: React, Next.js 14, Tailwind CSS, Framer Motion, Redux, React Query, Shopify, WooCommerce, WordPress
@@ -36,9 +36,12 @@ PROJECTS:
 5. AI-powered YouTube video summarization & analysis | n8n workflow
 
 SOCIAL LINKS:
-- LinkedIn: https://linkedin.com/in/sharjeelahmad/
-- GitHub: https://github.com/sharjeelahmad
-- Twitter: https://twitter.com/sharjeel_dev
+
+LinkedIn: https://www.linkedin.com/in/sharjeel-ahmad-remote-web-developer-2646361b7/
+
+GitHub: https://github.com/sharjeel-ahmad-web
+
+Twitter: https://x.com/JimmyKlair
 
 NAVIGATION:
 - About me (#about)
@@ -78,7 +81,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiApiKey)}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${encodeURIComponent(geminiApiKey)}`;
 
     const response = await fetch(url, {
       method: "POST",

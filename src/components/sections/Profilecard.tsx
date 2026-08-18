@@ -84,7 +84,7 @@ export const Profilecard = () => {
 
           <div className="space-y-2">
             <h1 className="text-4xl font-bold text-cream tracking-wide" style={{ fontFamily: "'Alex Brush', cursive" }}>
-              Sharjeel Ahmad
+              Sharjeel Ahmad Khan
             </h1>
             <p className="text-xl text-brand font-medium" style={{ fontFamily: "'Times New Roman', serif" }}>
               Remote Web Developer & AI Integration Specialist
@@ -102,9 +102,9 @@ export const Profilecard = () => {
             className="flex gap-6 mt-6 flex-wrap justify-center"
           >
             {[
-              { icon: FaLinkedin, link: "https://linkedin.com/in/sharjeelahmad/" },
-              { icon: FaGithub, link: "https://github.com/sharjeelahmad" },
-              { icon: FaTwitter, link: "https://twitter.com/sharjeel_dev" }
+              { icon: FaLinkedin, link: "https://www.linkedin.com/in/sharjeel-ahmad-remote-web-developer-2646361b7/" },
+              { icon: FaGithub, link: "https://github.com/sharjeel-ahmad-web" },
+              { icon: FaTwitter, link: "https://x.com/JimmyKlair" }
             ].map((social, index) => (
               <motion.a
                 key={index}
