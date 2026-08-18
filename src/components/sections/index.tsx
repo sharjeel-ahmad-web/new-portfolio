@@ -35,6 +35,11 @@ const Contact = dynamic(() => import("@/components/sections/Contact").then(mod =
   ssr: false,
 });
 
+const Resume = dynamic(() => import("@/components/sections/Resume").then(mod => ({ default: mod.Resume })), {
+  loading: () => <SectionSkeleton />,
+  ssr: false,
+});
+
 function SectionSkeleton() {
   return (
     <div className="w-full py-20 px-6 md:px-12 max-w-6xl mx-auto">
@@ -52,4 +57,4 @@ function SectionSkeleton() {
   );
 }
 
-export { Profilecard, AboutMe, Experience, Skills, Friends, Projects, Contact };
+export { Profilecard, AboutMe, Experience, Skills, Friends, Projects, Contact, Resume };

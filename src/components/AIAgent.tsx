@@ -98,7 +98,7 @@ export const AIAgent = () => {
   };
 
   const handleScheduleMeeting = () => {
-    window.open("https://calendly.com/sharjeel", "_blank");
+    window.open("https://calendly.com/chjiimy", "_blank");
   };
 
   return (

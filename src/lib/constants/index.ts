@@ -127,7 +127,7 @@ export const socials = [
   {
     name: "Twitter",
     icon: RxTwitterLogo,
-    link: "https://twitter.com/sharjeel_dev",
+    link: "https://x.com/JimmyKlair",
   },
 ] as const;
 
@@ -251,6 +251,10 @@ export const navlinks = [
     link: "#projects",
   },
   {
+    title: "Resume",
+    link: "#resume",
+  },
+  {
     title: "Contact",
     link: "#contact",
   },
@@ -260,4 +264,4 @@ export const navlinks = [
   },
   
   
-] as const;
+  ] as const;

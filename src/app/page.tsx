@@ -7,6 +7,7 @@ import {
   Friends,
   Projects,
   Contact,
+  Resume,
 } from "@/components/sections";
 
 export default function Home() {
@@ -37,13 +38,17 @@ export default function Home() {
           <Friends />
         </section>
 
-        <section id="projects">
-          <Projects />
-        </section>
+      <section id="projects">
+        <Projects />
+      </section>
 
-        <section id="contact">
-          <Contact />
-        </section>
+      <section id="resume">
+        <Resume />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
       </div>
     </main>
   );

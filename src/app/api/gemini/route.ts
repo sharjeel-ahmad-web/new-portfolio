@@ -2,12 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-/**
- * Gemini API Route for AI Agent
- * Acts as a proxy to hide API key from client
- * Includes full portfolio website content as system prompt
- */
-
 const SYSTEM_PROMPT = `You are Sharjeel Ahmad's AI assistant for his portfolio website. Your role is to help visitors understand Sharjeel's skills, projects, services, and how to contact him.
 
 ABOUT SHARJEEL:
@@ -77,44 +71,48 @@ export async function POST(req: NextRequest) {
     const geminiApiKey = process.env.GEMINI_API_KEY;
 
     if (!geminiApiKey) {
+      console.error("GEMINI_API_KEY is not set in environment variables");
       return NextResponse.json(
         { error: "Gemini API key not configured" },
         { status: 500 }
       );
     }
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: SYSTEM_PROMPT + "\n\nUser Question: " + message,
-                },
-              ],
-            },
-          ],
-          generationConfig: {
-            temperature: 0.7,
-            topK: 40,
-            topP: 0.95,
-            maxOutputTokens: 1024,
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiApiKey)}`;
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: SYSTEM_PROMPT + "\n\nUser Question: " + message,
+              },
+            ],
           },
-        }),
-      }
-    );
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        },
+      }),
+    });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Gemini API error:", errorData);
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Gemini API error:", response.status, errorData);
       return NextResponse.json(
-        { error: "Failed to generate response", details: errorData },
+        {
+          error: "Failed to generate response",
+          details: errorData,
+          hint: "Verify GEMINI_API_KEY in .env.local and ensure the Generative Language API is enabled in Google Cloud Console."
+        },
         { status: response.status }
       );
     }

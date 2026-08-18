@@ -47,7 +47,7 @@ export const AboutMe = () => {
 
           {/* About Text */}
           <p className="text-gray-300 text-lg relative z-10" style={{ fontFamily: "'Times New Roman', serif" }}>
-            I&apos;m <span className="text-brand font-semibold">Sharjeel Ahmad</span>, a <span className="text-cream font-medium">Remote Web Developer & AI Integration Specialist</span> based in Lahore, Pakistan. I hold a <span className="text-brand font-medium">BSSE in Artificial Intelligence from The University of Lahore</span>.
+            I&apos;m <span className="text-brand font-semibold">Sharjeel Ahmad khan</span>, a <span className="text-cream font-medium">Remote Web Developer & AI Integration Specialist</span> based in Lahore, Pakistan. I hold a <span className="text-brand font-medium">BSSE in Artificial Intelligence from The University of Lahore</span>.
           </p>
 
           <p className="text-gray-300 text-lg relative z-10" style={{ fontFamily: "'Times New Roman', serif" }}>
@@ -66,7 +66,7 @@ export const AboutMe = () => {
             className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold bg-brand overflow-hidden transition-all duration-300 hover:text-black"
             style={{ fontFamily: "'Times New Roman', serif" }}
           >
-            <span className="absolute inset-0 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            <span className="absolute inset-0  transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
             <span className="relative z-10 flex items-center gap-2">
               Let&apos;s Build Something
               <ArrowRight size={20} />
