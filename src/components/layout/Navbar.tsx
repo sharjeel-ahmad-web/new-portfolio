@@ -42,7 +42,7 @@ export const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="text-cream font-luxurious text-2xl sm:text-3xl tracking-wide"
           >
-            Sharjeel Ahmad
+            Sharjeel Ahmad khan 
           </motion.span>
         </Link>
 
